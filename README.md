@@ -41,8 +41,6 @@ Streaver/
 
 ## Instalación
 
-### Opción 1: Con Docker (Recomendado)
-
 1. Clonar el repositorio
 2. Copiar el archivo de configuración:
 ```powershell
@@ -120,3 +118,10 @@ docker-compose up -d
 - **Pandas**: Procesamiento de datos
 - **psycopg2**: Conector PostgreSQL
 - **Docker**: Contenerización
+
+## Futuros desarrollos
+
+1) Colocar la app en un servicio cloud para mantener la persistencia del servicio de forma online.
+2) Agregar una nueva tabla dentro de PostgreSQL para tener: copper -> silver -> gold para mayor control.
+3) En base al punto 2, instalar y administar con DBT.
+

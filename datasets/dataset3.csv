@@ -1,6 +1,8 @@
 Firstname,Lastname,zipcode,phonenumber,color
 Star,Killer,12345,123-456-7890,blue
 Indigo,Maybe,54321,(555) 123-4567,blue
+1234,No,,,
 Carlos,Silva,67890,1234567890,green
 Raquel,Martinez,11111,555.123.4567,yellow
 Esteban,Garcia,22222,+1 (555) 987-6543,light-orange
+2222,,Invalid, purple, 123 457 983
