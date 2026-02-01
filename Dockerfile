@@ -16,12 +16,14 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy application files
 COPY app/ ./app/
+COPY api/ ./api/
 
-# Expose Streamlit port
-EXPOSE 8501
+# Expose ports
+EXPOSE 8501 8000
 
 # Set environment variables
 ENV PYTHONUNBUFFERED=1
+ENV PYTHONPATH=/app
 
-# Run Streamlit
+# Default command (can be overridden in docker-compose)
 CMD ["streamlit", "run", "app/main.py", "--server.port=8501", "--server.address=0.0.0.0"]

@@ -1,43 +1,40 @@
 {
   "entries": [
     {
-      "color": "light-orange",
-      "firstname": "Esteban",
-      "lastname": "Garcia",
+      "color": "orange",
+      "firstname": "Charlie",
+      "lastname": "Brown",
       "phonenumber": "555-987-6543",
       "zipcode": "22222"
     },
     {
-      "color": "blue",
-      "firstname": "Star",
-      "lastname": "Killer",
+      "color": "red",
+      "firstname": "John",
+      "lastname": "Doe",
       "phonenumber": "123-456-7890",
       "zipcode": "12345"
     },
     {
-      "color": "yellow",
-      "firstname": "Raquel",
-      "lastname": "Martinez",
-      "phonenumber": "555-123-4567",
-      "zipcode": "11111"
+      "color": "green",
+      "firstname": "Bob",
+      "lastname": "Johnson",
+      "phonenumber": "123-456-7890",
+      "zipcode": "67890"
     },
     {
       "color": "blue",
-      "firstname": "Indigo",
-      "lastname": "Maybe",
+      "firstname": "Jane",
+      "lastname": "Smith",
       "phonenumber": "555-123-4567",
       "zipcode": "54321"
     },
     {
-      "color": "green",
-      "firstname": "Carlos",
-      "lastname": "Silva",
-      "phonenumber": "123-456-7890",
-      "zipcode": "67890"
+      "color": "yellow",
+      "firstname": "Alice",
+      "lastname": "Williams",
+      "phonenumber": "555-123-4567",
+      "zipcode": "11111"
     }
   ],
-  "errors": [
-    2,
-    6
-  ]
+  "errors": []
 }

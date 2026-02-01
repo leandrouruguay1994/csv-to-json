@@ -52,6 +52,10 @@ if uploaded_file is not None:
         # Read CSV file
         df = pd.read_csv(uploaded_file)
         
+        # Replace NaN with None for JSON compatibility
+        df = df.replace({pd.NA: None, pd.NaT: None})
+        df = df.where(pd.notna(df), None)
+        
         st.subheader("Original Data Preview")
         st.dataframe(df.head(10))
         

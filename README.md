@@ -5,14 +5,15 @@ Aplicación Streamlit que procesa archivos CSV, normaliza los datos y los almace
 ## Características
 
 - 📊 Interfaz web con Streamlit
-- 🔄 Normalización de números telefónicos a formato xxx-xxx-xxxx
+- � API REST con FastAPI para acceso programático
+- �🔄 Normalización de números telefónicos a formato xxx-xxx-xxxx
 - 🗄️ Almacenamiento en PostgreSQL con dos tablas (original y normalizada)
 - 📝 Exportación a JSON con formato indentado (2 espacios) y claves ordenadas
 - ✅ Validación de datos y reporte de errores por línea
 - 📈 Ordenamiento alfabético por apellido y nombre
 - 📊 Conteo de color más popular entre los registros de los csvs.
 
-![Diagrama del Sistema](diagram.png)
+![Diagrama del Sistema](diagram.jpg)
 
 ## Estructura del Proyecto
 
@@ -25,10 +26,16 @@ Streaver/
 │   └── utils/
 │       ├── database.py      
 │       └── normalizer.py    
+├── api/
+│   └── api.py                
+├── datasets/ 
+│       ├── dataset1.csv
+│       ├── dataset2.csv
+│       └── dataset3.csv               
 ├── Dockerfile               
-├── docker-compose.yml      
-├── requirements.txt
-│── diagram.png         
+├── docker-compose.yml       
+├── requirements.txt         
+├── diagram.png              
 ├── .env                     
 └── README.md                
 ```
@@ -43,18 +50,37 @@ Streaver/
 
 1. Clonar el repositorio
 2. Copiar el archivo de configuración:
+
 ```powershell
 Copy-Item .env.example .env
 ```
 
 3. Iniciar los servicios:
-```powershell
+
+```
 docker-compose up -d
 ```
 
-4. Acceder a la aplicación en: http://localhost:8501
+## Acceso a los Servicios
 
-## Uso
+Una vez levantados los contenedores:
+
+- **Streamlit UI**: http://localhost:8501
+- **API Docs (Swagger)**: http://localhost:8000/docs
+- **PostgreSQL**: localhost:5432
+
+### Endpoints Principales:
+
+```bash
+# Health check
+curl http://localhost:8000/health
+
+# Subir CSV
+curl -X POST "http://localhost:8000/upload" \
+  -F "file=@datasets/format1_example.csv"
+```
+
+## Uso de Streamlit
 
 1. Abrir la aplicación en el navegador
 2. Cargar un archivo CSV con las columnas
