@@ -122,6 +122,6 @@ docker-compose up -d
 ## Futuros desarrollos
 
 1) Colocar la app en un servicio cloud para mantener la persistencia del servicio de forma online.
-2) Agregar una nueva tabla dentro de PostgreSQL para tener: copper -> silver -> gold para mayor control.
+2) Implementar arquitectura de datos medallion (Bronze → Silver → Gold) en PostgreSQL para mejor gestión de calidad y transformación de datos.
 3) En base al punto 2, instalar y administar con DBT.
 
