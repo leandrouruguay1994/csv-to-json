@@ -121,7 +121,7 @@ docker-compose up -d
 
 ## Futuros desarrollos
 
-1) Colocar la app en un servicio cloud para mantener la persistencia del servicio de forma online.
+1) Desplegar la aplicación en un servicio cloud (AWS/Azure/GCP) para garantizar disponibilidad y persistencia continua.
 2) Implementar arquitectura de datos medallion (Bronze → Silver → Gold) en PostgreSQL para mejor gestión de calidad y transformación de datos.
-3) En base al punto 2, instalar y administar con DBT.
+3) Integrar DBT (Data Build Tool) para orquestar y gestionar las transformaciones de datos entre capas.
 
