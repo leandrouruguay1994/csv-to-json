@@ -1,0 +1,20 @@
+{
+  "entries": [
+    {
+      "color": "nan",
+      "firstname": "Carlo Manchini",
+      "lastname": "Red",
+      "phonenumber": "703-955-0373",
+      "zipcode": "11237"
+    }
+  ],
+  "errors": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ]
+}
