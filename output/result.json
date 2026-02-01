@@ -1,20 +1,40 @@
 {
   "entries": [
     {
-      "color": "nan",
-      "firstname": "Carlo Manchini",
-      "lastname": "Red",
-      "phonenumber": "703-955-0373",
-      "zipcode": "11237"
+      "color": "orange",
+      "firstname": "Charlie",
+      "lastname": "Brown",
+      "phonenumber": "555-987-6543",
+      "zipcode": "22222"
+    },
+    {
+      "color": "red",
+      "firstname": "John",
+      "lastname": "Doe",
+      "phonenumber": "123-456-7890",
+      "zipcode": "12345"
+    },
+    {
+      "color": "green",
+      "firstname": "Bob",
+      "lastname": "Johnson",
+      "phonenumber": "123-456-7890",
+      "zipcode": "67890"
+    },
+    {
+      "color": "blue",
+      "firstname": "Jane",
+      "lastname": "Smith",
+      "phonenumber": "555-123-4567",
+      "zipcode": "54321"
+    },
+    {
+      "color": "yellow",
+      "firstname": "Alice",
+      "lastname": "Williams",
+      "phonenumber": "555-123-4567",
+      "zipcode": "11111"
     }
   ],
-  "errors": [
-    0,
-    1,
-    2,
-    3,
-    4,
-    5,
-    6
-  ]
+  "errors": []
 }

@@ -78,7 +78,9 @@ class DatabaseManager:
     def insert_normalized_data(self, entries: List[Dict], original_id: int):
         """Insert normalized data"""
         try:
-            for entry in entries:
+            print(f"DEBUG: Inserting {len(entries)} entries with original_id {original_id}")
+            for i, entry in enumerate(entries):
+                print(f"DEBUG: Entry {i}: {entry}")
                 self.cursor.execute("""
                     INSERT INTO normalized_data 
                     (firstname, lastname, phonenumber, zipcode, color, original_id)
@@ -92,11 +94,34 @@ class DatabaseManager:
                     original_id
                 ))
             self.conn.commit()
+            print(f"DEBUG: Successfully inserted {len(entries)} entries")
             return True
         except Exception as e:
             print(f"Error inserting normalized data: {e}")
+            import traceback
+            traceback.print_exc()
             self.conn.rollback()
             return False
+    
+    def get_color_counts(self) -> Dict[str, int]:
+        """Get count of each color from normalized_data table"""
+        try:
+            self.cursor.execute("""
+                SELECT color, COUNT(*) as count
+                FROM normalized_data
+                WHERE color IS NOT NULL AND color != ''
+                GROUP BY color
+                ORDER BY count DESC
+            """)
+            results = self.cursor.fetchall()
+            color_dict = {row[0]: row[1] for row in results}
+            print(f"Color counts retrieved: {color_dict}")  # Debug
+            return color_dict
+        except Exception as e:
+            print(f"Error getting color counts: {e}")
+            import traceback
+            traceback.print_exc()
+            return {}
     
     def close(self):
         """Close database connection"""

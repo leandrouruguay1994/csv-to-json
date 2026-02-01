@@ -93,13 +93,23 @@ if uploaded_file is not None:
                     try:
                         # Insert original data
                         original_id = db.insert_original_data(original_data)
+                        st.write(f"DEBUG: Original ID = {original_id}, Entries count = {len(entries)}")
                         
                         if original_id and entries:
                             # Insert normalized data
-                            db.insert_normalized_data(entries, original_id)
-                            st.success("✅ Data saved to database successfully!")
+                            success = db.insert_normalized_data(entries, original_id)
+                            if success:
+                                st.success("✅ Data saved to database successfully!")
+                            else:
+                                st.error("❌ Failed to save normalized data")
+                        elif not original_id:
+                            st.error("❌ Failed to save original data")
+                        elif not entries:
+                            st.warning("⚠️ No valid entries to save")
                     except Exception as e:
                         st.error(f"Error saving to database: {e}")
+                        import traceback
+                        st.code(traceback.format_exc())
                 
                 # Save to JSON file
                 output_dir = Path(__file__).parent.parent / "output"
@@ -124,6 +134,37 @@ if uploaded_file is not None:
     except Exception as e:
         st.error(f"Error reading CSV file: {e}")
         st.info("Please make sure your CSV file is in one of the 3 supported formats. See sidebar for details.")
+
+# Color Statistics Section
+if db:
+    st.divider()
+    st.subheader("📊 Color Statistics (All Data)")
+    
+    if st.button("🔍 View Color Statistics", type="secondary"):
+        with st.spinner("Loading color statistics..."):
+            color_counts = db.get_color_counts()
+            
+            if color_counts:
+                # Create DataFrame for visualization
+                import pandas as pd
+                color_df = pd.DataFrame(list(color_counts.items()), columns=['Color', 'Count'])
+                
+                # Display metrics
+                col1, col2 = st.columns(2)
+                with col1:
+                    st.metric("Total Colors", len(color_counts))
+                with col2:
+                    st.metric("Total Entries", sum(color_counts.values()))
+                
+                # Bar chart
+                st.bar_chart(color_df.set_index('Color'))
+                
+                # Also show as table
+                with st.expander("View detailed color counts"):
+                    st.dataframe(color_df, use_container_width=True)
+            else:
+                st.warning("No data found in database. Please ensure data was saved successfully.")
+                st.info("Tip: Check that you clicked 'Process and Normalize Data' button after uploading CSV files.")
 
 # Sidebar with information
 with st.sidebar:
@@ -150,6 +191,9 @@ with st.sidebar:
     Nuestra base de datos PostgreSQL contiene dos tablas principales:
     - **original_data**: Almacena los datos CSV sin procesar
     - **normalized_data**: Almacena las entradas normalizadas
+
+    ### Color summarization
+    La sección de estadísticas de color muestra un resumen de todos los colores en la base de datos, junto con sus recuentos.
     """)
     
     st.divider()
